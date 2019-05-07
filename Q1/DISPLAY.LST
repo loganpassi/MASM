@@ -1,0 +1,62 @@
+Microsoft (R) Macro Assembler Version 5.00                  3/5/19 16:51:24
+display.asm                                                 Page     1-1
+
+
+				TITLE display.asm 
+				 
+				EXTRN printmessage: ABS 
+				 
+				.MODEL small 
+				 
+ 0000				.DATA 
+				 
+						EXTRN mymessage: BYTE 
+						 
+ 0000				.CODE 
+				PUBLIC display 
+				 
+ 0000				display PROC 
+ 0000  B8 4000					mov ax, 4000H 
+ 0003  BB 0001					mov bx, 1 
+ 0006  B9 0000 E				mov cx, printmessage 
+ 0009  BA 0000 E				mov dx, OFFSET mymessage 
+ 000C  CD 21					int 21h 
+ 000E  C3					ret 
+ 000F				display ENDP 
+ 000F				END 
+Microsoft (R) Macro Assembler Version 5.00                  3/5/19 16:51:24
+display.asm                                                 Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+DGROUP . . . . . . . . . . . . .  	GROUP
+  _DATA  . . . . . . . . . . . .  	0000	WORD	PUBLIC	'DATA'
+_TEXT  . . . . . . . . . . . . .  	000F	WORD	PUBLIC	'CODE'
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+DISPLAY  . . . . . . . . . . . .  	N PROC	0000	_TEXT	Global	Length = 000F
+
+MYMESSAGE  . . . . . . . . . . .  	V BYTE	0000	_DATA	External
+
+PRINTMESSAGE . . . . . . . . . .  	NUMBER	0000		External
+
+@CODE  . . . . . . . . . . . . .  	TEXT  _TEXT		
+@CODESIZE  . . . . . . . . . . .  	TEXT  0		
+@DATASIZE  . . . . . . . . . . .  	TEXT  0		
+@FILENAME  . . . . . . . . . . .  	TEXT  display		
+
+
+     22 Source  Lines
+     22 Total   Lines
+     16 Symbols
+
+  51156 + 465388 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

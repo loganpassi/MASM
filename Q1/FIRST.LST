@@ -1,0 +1,72 @@
+Microsoft (R) Macro Assembler Version 5.00                  3/5/19 16:50:52
+first.asm                                                   Page     1-1
+
+
+				TITLE first.asm 
+				 
+				DOSSEG 
+				 
+				.MODEL small 
+				 
+ 0100				.STACK 100H 
+				 
+ 0000				.DATA 
+				PUBLIC mymessage, printmessage 
+ 0000  48 65 6C 6C 6F 2C 20		   mymessage DB "Hello, world!", 0AH, 0
+				DH 
+       77 6F 72 6C 64 21 0A	
+       0D			
+ = 000F					   printmessage EQU $ - mymessage 
+					    
+ 0000				.CODE 
+						EXTRN display: PROC 
+						 
+ 0000				start: 
+				 
+ 0000  B8 ---- R				mov ax, @data 
+ 0003  8E D8					mov ds, ax 
+						 
+ 0005  E8 0000 E				call display 
+						 
+ 0008  B8 4C00					mov ax, 4C00H 
+ 000B  CD 21					int 21h 
+ 000D				END start 
+Microsoft (R) Macro Assembler Version 5.00                  3/5/19 16:50:52
+first.asm                                                   Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+DGROUP . . . . . . . . . . . . .  	GROUP
+  _DATA  . . . . . . . . . . . .  	000F	WORD	PUBLIC	'DATA'
+  STACK  . . . . . . . . . . . .  	0100	PARA	STACK	'STACK'
+_TEXT  . . . . . . . . . . . . .  	000D	WORD	PUBLIC	'CODE'
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+DISPLAY  . . . . . . . . . . . .  	L NEAR	0000	_TEXT	External
+
+MYMESSAGE  . . . . . . . . . . .  	L BYTE	0000	_DATA	Global
+
+PRINTMESSAGE . . . . . . . . . .  	NUMBER	000F		Global
+
+START  . . . . . . . . . . . . .  	L NEAR	0000	_TEXT
+
+@CODE  . . . . . . . . . . . . .  	TEXT  _TEXT		
+@CODESIZE  . . . . . . . . . . .  	TEXT  0		
+@DATASIZE  . . . . . . . . . . .  	TEXT  0		
+@FILENAME  . . . . . . . . . . .  	TEXT  first		
+
+
+     26 Source  Lines
+     26 Total   Lines
+     18 Symbols
+
+  51128 + 465416 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors
